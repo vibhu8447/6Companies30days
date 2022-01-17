@@ -1,0 +1,26 @@
+ vector<string> winner(string arr[],int n)
+    {
+        // Your code here
+        // Return the string containing the name and an integer
+        // representing the number of votes the winning candidate got
+        vector<string > res;
+        int mx=0;
+        map<string ,int > m;
+        string s;
+        
+        for (int i=0;i<n;i++)
+        {
+            m[arr[i]]++;
+        }
+        for(auto x: m){
+            if(x.second>mx)
+            {
+                mx=x.second;
+                s=x.first;
+            }
+            // cout<<x.first<<" "<<x.second<<endl;
+        }
+        res.push_back(s);
+        res.push_back(to_string(mx));
+        return res;
+    }
