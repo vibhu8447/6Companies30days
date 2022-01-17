@@ -1,0 +1,27 @@
+int lengthOfLongestAP(int A[], int n) {
+        // code here
+        if(n<=2){
+            return n;
+        }
+        int res=1;
+        vector< unordered_map<int,int>>m(n);
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+               int dif=A[i]-A[j];
+               if(m[i].find(dif)!=m[i].end())
+               {
+                   m[j][dif]=m[i][dif]+1;
+               }
+               else
+               {
+                   m[j][dif]=2;
+               }
+              
+            res=max(res,m[j][dif]);
+            }
+        }
+    return res;
+       
+    }
