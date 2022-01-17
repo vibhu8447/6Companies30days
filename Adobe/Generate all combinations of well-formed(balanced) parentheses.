@@ -1,0 +1,44 @@
+    vector<string> v;
+    void  help( string &s, int l,int r){
+        if(l==0 && r==0)
+        {
+            if(s[s.size()-1]==')')
+            {
+                v.push_back(s);
+            }
+            return ;
+        }
+        
+        if(l==r)
+        {
+        
+            s.push_back('(');
+            help(s,l-1,r);
+            s.pop_back();
+            return ;
+        }
+        else
+        {
+            if(l>0)
+            {
+                s.push_back('(');
+                help(s,l-1,r);
+                s.pop_back();
+            }
+            if(r>0)
+            {
+                s.push_back(')');
+                help(s,l,r-1);
+                s.pop_back();   
+            }
+        }
+    }
+    
+    vector<string> AllParenthesis(int n) 
+    {
+        // Your code goes here
+        string s="";
+        help(s,n,n);
+        return v;
+        
+    }
